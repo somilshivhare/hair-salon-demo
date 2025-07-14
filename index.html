@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Salon - Transform Your Look</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f6f7;
+      color: #2d2d2d;
+    }
+    .navbar {
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: #d4af37 !important;
+      letter-spacing: 1px;
+    }
+    .nav-link.active, .nav-link:focus, .nav-link:hover {
+      color: #d63384 !important;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: #fff;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(44, 44, 44, 0.45);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    .hero-btn {
+      background: #d63384;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 2.5rem;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      transition: background 0.2s;
+      box-shadow: 0 4px 16px rgba(214,51,132,0.12);
+    }
+    .hero-btn:hover {
+      background: #b0256a;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #d63384;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .service-card {
+      border: none;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(44,44,44,0.07);
+      transition: transform 0.2s;
+      background: #fff;
+    }
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 6px 24px rgba(214,51,132,0.10);
+    }
+    .trending {
+      background: #d63384;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 12px;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-weight: 600;
+    }
+    .stylist-img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #d4af37;
+      margin-bottom: 1rem;
+    }
+    .gallery-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 12px rgba(44,44,44,0.08);
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(44,44,44,0.07);
+      padding: 1.5rem;
+      margin: 0.5rem;
+      min-height: 220px;
+    }
+    .testimonial-rating {
+      color: #d4af37;
+      font-size: 1.2rem;
+    }
+    .offer-card {
+      background: #fff0f6;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(214,51,132,0.07);
+      padding: 1.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ffd6e6;
+    }
+    .offer-price {
+      color: #d63384;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      margin-left: 0.5rem;
+      font-size: 1rem;
+    }
+    .booking-form {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(44,44,44,0.07);
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+    }
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      margin-left: 1rem;
+      transition: background 0.2s;
+    }
+    .btn-whatsapp:hover {
+      background: #128c7e;
+    }
+    .contact-info a {
+      color: #d63384;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .sticky-top {
+      z-index: 1030;
+    }
+    @media (max-width: 767px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .gallery-img {
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky Header -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Premium Salon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stylists">Stylists</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#book">Book</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Transform Your Look. Book Today.</h1>
+      <button class="hero-btn" onclick="document.getElementById('book').scrollIntoView({behavior: 'smooth'})">Book Now</button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="container py-5" id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card service-card position-relative">
+          <span class="trending">🔥 Trending</span>
+          <div class="card-body">
+            <h5 class="card-title">Haircuts</h5>
+            <p class="card-text">Precision cuts for all hair types, tailored to your style.</p>
+            <p class="fw-bold">From ₹799</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card position-relative">
+          <div class="card-body">
+            <h5 class="card-title">Coloring</h5>
+            <p class="card-text">Vibrant, lasting color using premium products.</p>
+            <p class="fw-bold">From ₹1499</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card position-relative">
+          <span class="trending">🔥 Trending</span>
+          <div class="card-body">
+            <h5 class="card-title">Nails</h5>
+            <p class="card-text">Manicure, pedicure, and nail art for every occasion.</p>
+            <p class="fw-bold">From ₹599</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card position-relative mt-4">
+          <div class="card-body">
+            <h5 class="card-title">Lashes</h5>
+            <p class="card-text">Lash lifts, extensions, and tints for a stunning gaze.</p>
+            <p class="fw-bold">From ₹999</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card position-relative mt-4">
+          <div class="card-body">
+            <h5 class="card-title">Facials</h5>
+            <p class="card-text">Rejuvenating facials for glowing, healthy skin.</p>
+            <p class="fw-bold">From ₹1299</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card position-relative mt-4">
+          <div class="card-body">
+            <h5 class="card-title">Bridal</h5>
+            <p class="card-text">Bridal hair, makeup, and pre-wedding packages.</p>
+            <p class="fw-bold">From ₹4999</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team/Stylist Section -->
+  <section class="container py-5" id="stylists">
+    <h2 class="section-title">Meet Our Stylists</h2>
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4 text-center">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Amit" class="stylist-img">
+        <h5 class="fw-bold">Amit</h5>
+        <p>Haircut & Color Specialist</p>
+        <div class="testimonial-rating">★★★★★ 4.9</div>
+        <small>"Amit always knows what suits me best!"</small>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Happy" class="stylist-img">
+        <h5 class="fw-bold">Happy</h5>
+        <p>Bridal & Makeup Expert</p>
+        <div class="testimonial-rating">★★★★★ 4.8</div>
+        <small>"My wedding look was perfect!"</small>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="John" class="stylist-img">
+        <h5 class="fw-bold">John</h5>
+        <p>Nail & Lash Artist</p>
+        <div class="testimonial-rating">★★★★★ 4.7</div>
+        <small>"Best nail art in town!"</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="container py-5" id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1519415943484-cfbdfb6c7b51?auto=format&fit=crop&w=400&q=80" class="gallery-img" alt="Gallery 1">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="gallery-img" alt="Gallery 2">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" class="gallery-img" alt="Gallery 3">
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" class="gallery-img" alt="Gallery 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="container py-5" id="testimonials">
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">★★★★★ 5.0</div>
+            <p>"Absolutely loved my new look! The team is so talented and friendly."</p>
+            <small>- Priya S.</small>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">★★★★★ 4.8</div>
+            <p>"Best salon experience ever. Highly recommend their facials and haircuts!"</p>
+            <small>- Rohan M.</small>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">★★★★★ 4.7</div>
+            <p>"The bridal package was a lifesaver. Thank you for making my day special!"</p>
+            <small>- Anjali K.</small>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="text-center mt-3">
+      <span class="fw-bold">4.8/5</span> average rating from 200+ clients
+    </div>
+  </section>
+
+  <!-- Offers / Packages Section -->
+  <section class="container py-5" id="offers">
+    <h2 class="section-title">Special Offers</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="offer-card">
+          <h5>Hair + Facial Combo</h5>
+          <div>
+            <span class="offer-price">₹1999</span>
+            <span class="old-price">₹2599</span>
+          </div>
+          <p>Get a stylish haircut and a rejuvenating facial at a special price. <br><small>Valid till 30th June</small></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="offer-card">
+          <h5>Bridal Bliss Package</h5>
+          <div>
+            <span class="offer-price">₹7999</span>
+            <span class="old-price">₹9999</span>
+          </div>
+          <p>Complete bridal hair, makeup, and nails. <br><small>Valid till 31st July</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section class="container py-5" id="book">
+    <h2 class="section-title">Book Your Appointment</h2>
+    <form class="booking-form" id="bookingForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10}">
+      </div>
+      <div class="mb-3">
+        <label for="service" class="form-label">Service</label>
+        <select class="form-select" id="service" required>
+          <option value="">Select a service</option>
+          <option>Haircut</option>
+          <option>Coloring</option>
+          <option>Nails</option>
+          <option>Lashes</option>
+          <option>Facials</option>
+          <option>Bridal</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" required>
+      </div>
+      <div class="mb-3">
+        <label for="time" class="form-label">Time</label>
+        <input type="time" class="form-control" id="time" required>
+      </div>
+      <button type="submit" class="btn hero-btn w-100">Book Now</button>
+      <a href="https://wa.me/919999999999?text=I%20want%20to%20book%20an%20appointment%20at%20Premium%20Salon" target="_blank" class="btn btn-whatsapp w-100 mt-2">Book via WhatsApp</a>
+    </form>
+    <div id="bookingSuccess" class="alert alert-success mt-3 d-none text-center">Thank you! Your booking has been received.</div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container py-5" id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <div class="contact-info mb-3">
+          <p><strong>Address:</strong> 123, Main Street, New Delhi, India</p>
+          <p><strong>Phone:</strong> <a href="tel:+919999999999">+91 99999 99999</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@premiumsalon.com">info@premiumsalon.com</a></p>
+          <a href="https://wa.me/919999999999" target="_blank" class="btn btn-whatsapp mt-2">WhatsApp Us</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <iframe src="https://www.google.com/maps?q=28.6139,77.2090&z=15&output=embed" width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-4" style="background:#222;color:#fff;">
+    &copy; 2024 Premium Salon. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Booking form handler (frontend only)
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('bookingSuccess').classList.remove('d-none');
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('bookingSuccess').classList.add('d-none');
+      }, 4000);
+    });
+
+    // Animate on scroll (simple fade-in)
+    function revealOnScroll() {
+      document.querySelectorAll('section').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.style.opacity = 1;
+          section.style.transform = 'none';
+        } else {
+          section.style.opacity = 0;
+          section.style.transform = 'translateY(60px)';
+        }
+      });
+    }
+    document.querySelectorAll('section').forEach(section => {
+      section.style.transition = 'all 0.7s cubic-bezier(.4,2,.3,1)';
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(60px)';
+    });
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html> 
